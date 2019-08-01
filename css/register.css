@@ -1,0 +1,30 @@
+	*{
+		margin: 0;
+		padding: 0;
+	}
+
+	.NavigationBars{
+		display: flex;
+		justify-content:space-between;
+		background: #007AFF;
+		padding: 1rem;
+	}
+
+	.Register>div{
+		display: flex;
+		justify-content:center;
+		margin-top: 2rem;
+	}
+	
+	.Register>div>label{
+		width: 4rem;
+	}
+	.button{
+		display: flex;
+		justify-content:center;
+	}
+	.button button{
+		width: 4rem;
+		margin: 1rem;
+		margin-top: 5rem;
+	}

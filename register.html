@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="swiper-4.5.0/dist/css/swiper.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/register.css"/>
+    <script type="text/javascript">
+    	
+   		document.addEventListener('plusready', function(){
+   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+   			
+   		});	
+    </script>
+	<style type="text/css">
+		*{
+
+		}
+		#code {
+			width: 3.5rem;
+			height: 2rem;
+			font-size: 1rem;
+			font-family: Arial;
+			font-style: italic;
+			font-weight: bold;
+			border: 0;
+			letter-spacing: 0.15rem;
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="Box">
+		<div class="Background">
+			<div class="NavigationBars">
+				<div class="logo">
+					<a href="index.html">返回</a>
+				</div>
+				<div class="headline">
+					标题
+				</div>
+				<div></div>
+			</div>
+			<div class="Register">
+				<div class="UserName">
+					<label>用户名</label>
+					<input type="text" placeholder="字母数字">
+				</div>
+				<div class="Password">
+					<label>密码</label>
+					<input type="text" placeholder="大小写字母数字">
+				</div>
+				<div class="ConfirmPassword">
+					<label>确认密码</label>
+					<input type="text" placeholder="两次密码一致">
+				</div>
+				<div class="Mailbox">
+					<label>邮箱</label>
+					<input type="text" placeholder="例:xxx.@361.com">
+				</div>
+				<div class="Cellphone">
+					<label>手机</label>
+					<input type="text" placeholder="例:15988888888">
+				</div>
+				<div class="Verification">
+					<label>验证码</label>
+					<div style="width: 11rem;">
+						<button type="button">获取验证码</button>
+					</div>
+				</div>
+			</div>
+			<div class="button">
+				<div class="Centered">
+					<button id="submit" type="button">提交</button>
+					<button id="reset" type="button"><a href="register.html">重置</a></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" ></script>
+<script type="text/javascript" src="swiper-4.5.0/dist/js/swiper.min.js"></script>
+<script type="text/javascript">
+	var _Yes=function(a){
+		$(a).after("<div id='_Yes' style='position: absolute;right: 0rem;color: green;'>输入正确</div>");
+	}
+	var _No=function(a){
+		$(a).after("<div id='_No' style='position: absolute;right: 0rem;color: red;'>输入错误</div>");
+	}
+	//封装,基本上要
+	console.log($(".Verification div button"));
+	var _verify=function(a,b){
+		$(a).blur(function(){
+			$("#_Yes").remove();
+			$("#_No").remove();
+			console.log(this);
+			var _this = this.value;
+			var reg = b;
+			if (reg.test(_this)){
+				_Yes(a);
+			}else{
+				_No(a);
+			}
+		})
+	}
+	var _Confirm=function(a,b){
+		$("#_Yes").remove();
+		$("#_No").remove();
+		$(a).blur(function(){
+			// $(a).val()==$(b).val() ? _Yes(a) : _No(a);
+			if($(a).val()==$(b).val()){
+				_Yes(a);
+			}else{
+				_No(a);
+			}
+		})
+	}
+	_verify(".UserName input",/^[a-zA-Z][a-zA-Z0-9_]{7,15}$/);
+	_verify(".Password input",/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{7,15}$/);
+	_Confirm(".ConfirmPassword input",".Password input");
+	_verify(".Mailbox input",/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
+	_verify(".Cellphone input",/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/);
+	$(".Verification div button").click(function(){
+		$(".Verification div button").remove();
+		$(".Verification div").append('<input style="margin-top: 0rem;margin-top: 0rem" type="button" id="code" />');
+		$(".Verification div").append('<input style="margin-left: 0rem;margin-left: 0.25rem;" type="button" value="重新获取验证码" id="check"/>');
+		$(".Verification div").append('<input type="text" id="input" />');
+		//https://www.jb51.net/article/108779.htm
+		   function change() {
+			code = $("#code");
+			// 验证码组成库
+			var arrays = new Array(
+				'1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+				'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+				'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+				'u', 'v', 'w', 'x', 'y', 'z',
+				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+				'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+				'U', 'V', 'W', 'X', 'Y', 'Z'
+			);
+			codes = '';// 重新初始化验证码
+			for (var i = 0; i < 4; i++) {
+				// 随机获取一个数组的下标
+				var r = parseInt(Math.random() * arrays.length);
+				codes += arrays[r];
+			}
+			// 验证码添加到input里
+			code.val(codes);
+		}
+		
+		
+		change();		
+		$("#check").click(function () {
+			change();//刷新验证码
+			//https://www.cnblogs.com/wanf/p/8038639.html
+			var btn = $(this);
+               var count = 60;
+               var resend = setInterval(function(){
+                   count--;
+                   if (count > 0){
+                       btn.val(count+"秒后可重新获取");
+                       
+                   }else {
+                       clearInterval(resend);
+                       btn.val("重新获取验证码").removeAttr('disabled style');
+                   }
+               }, 1000);
+               btn.attr('disabled',true).css('cursor','not-allowed');
+			
+		})
+		$("#submit").click(function () {
+			var inputCode = $("#input").val().toUpperCase(); //取得输入的验证码并转化为大写 
+			console.log(inputCode);
+			if (inputCode.length == 0) { //若输入的验证码长度为0
+				alert("请输入验证码！"); //则弹出请输入验证码
+			}else if (inputCode != codes.toUpperCase()) { //若输入的验证码与产生的验证码不一致时
+				alert("验证码输入错误!请重新输入"); //则弹出验证码输入错误
+				$("#input").val("");//清空文本框
+			} else { //输入正确时
+				//https://www.cnblogs.com/Yellow-ice/p/10507472.html//userData
+				// window.location.href="index.html";
+			
+			 	var userData = {
+			 		UserName:$(".UserName input").val(),
+			 		Password:$(".UserName input").val(),
+			 		ConfirmPassword:$(".UserName input").val(),
+			 		Mailbox:$(".UserName input").val(),
+			 		Cellphone:$(".UserName input").val(),
+			 	}
+			 	localStorage.setItem("userData",JSON.stringify(userData));
+			 	location.href="index.html"
+			}
+		});
+	})
+	
+
+
+
+
+
+</script>
+</html>

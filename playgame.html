@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="swiper-4.5.0/dist/css/swiper.min.css"/>
+	<link rel="stylesheet" href="layui/css/layui.css">
+    <script type="text/javascript">
+    	
+   		document.addEventListener('plusready', function(){
+   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+   			
+   		});	
+    </script>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		
+		.NavigationBars{
+			display: flex;
+			justify-content:space-between;
+			background: #007AFF;
+			padding: 1rem;
+		}
+		.button{
+			display: flex;
+			justify-content:center;
+		}
+		.button button{
+			width: 4rem;
+			margin: 1rem;
+			margin-top: 5rem;
+		}
+		._villager{
+			display: flex;
+			justify-content:center;
+			margin-top: 1rem;
+			margin-left: 2rem;
+		}
+		._villager>label{
+			width: 5rem;
+		}
+		._Players{
+			display: flex;
+			justify-content:center;
+		}
+		._Players button{
+			height: 2rem;
+			width: 5rem;
+			margin: 2rem;
+			
+		}
+		._ul{
+			margin: 0 auto;
+			overflow: hidden;
+			background: #FFF9EC;
+			
+		}
+		._ul span{
+			left: 1rem;
+		}
+		._ul a{
+			color: #000000 !important;
+		}
+		.layui-nav-bar{
+			display: none;
+		}
+		.layui-this>a:hover{
+			background: #ababab !important;
+		}
+		.layui-this>a{
+			background: #FAFAFA !important;
+		}
+		._ks{
+			width: 8rem !important;
+			border:1px solid #00F;
+			background: #009E94;
+			margin: 0 auto;
+			background: bisque;
+		}
+		dl dd a{
+			width: 5rem !important;
+			border:1px solid #00F;
+			background: mistyrose;
+			margin: 0 auto;
+		}
+		.layui-nav-tree .layui-nav-child{
+			background: #FFFFFF !important;
+		}
+		dd.layui-this{
+			background: #FFFFFF !important;
+		}
+		.layui-nav .layui-nav-item a {
+			padding: 0;
+		}
+		.layui-nav-tree .layui-nav-item a:hover {
+			background-color: silver;
+		}s
+		#_fg{
+			position:fixed;
+			top: calc(100%-1rem);
+		}
+	</style>
+</head>
+<body>
+	<div class="Box">
+		<div class="Background ">
+			<div class="NavigationBars">
+				<div class="logo">
+					<a href="index.html">返回</a>
+				</div>
+				<div class="headline">
+					游戏进行
+				</div>
+				<div>
+					<button type="button" id="_pd">判断</button>
+				</div>
+			</div>
+			<div class="content _yi">
+				<div class="NumberDay" style="margin: 1rem auto;">
+					<ul class="layui-nav layui-nav-tree _ul">
+						<li class="layui-nav-item layui-nav-itemed" style="text-align:center">
+							<a id="_ts" href="javascript:;"></a>
+							<dl class="layui-nav-child">
+								<dd class=" layui-nav-itemed">
+									<a class="_ks" href="javascript:;">晚上</a>
+									<dl class="layui-nav-child">
+										<dd class="layui-this"><a href="Werewolves.html">狼人杀人</a></dd>
+										<dd><a href="See.html">预言家查看</a></dd>
+										<dd><a href="Witch.html">女巫选择</a></dd>
+										<dd><a href="Savior.html">守卫选择</a></dd>
+									</dl>
+								</dd>
+								<dd class=" layui-nav-itemed">
+									<a class="_ks" href="javascript:;">白天</a>
+									<dl class="layui-nav-child">
+										<dd><a href="javascript:;" class="qsyrfy">竞选警长</a></dd>
+										<dd><a href="PoliceBadge.html">警徽选择</a></dd>
+										<dd><a href="javascript:;"  class="qjzfy">警长发言</a></dd>
+										<dd><a href="javascript:;" class="qsyrfy">所有人发言</a></dd>
+										<dd><a href="Vote.html">投票</a></dd>
+									</dl>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- <div class="content _re">
+				<div class="NumberDay" style="margin: 1rem auto;">
+					<ul class="layui-nav layui-nav-tree _ul">
+						<li class="layui-nav-item layui-nav-itemed" style="text-align:center">
+							<a href="javascript:;">第二天</a>
+							<dl class="layui-nav-child">
+								<dd class=" layui-nav-itemed">
+									<a class="_ks" href="javascript:;">晚上</a>
+									<dl class="layui-nav-child">
+										<dd class="layui-this"><a href="Werewolves.html">狼人杀人</a></dd>
+										<dd><a href="See.html">预言家查看</a></dd>
+										<dd><a href="Witch.html">女巫选择</a></dd>
+										<dd><a href="Savior.html">守卫选择</a></dd>
+									</dl>
+								</dd>
+								<dd class=" layui-nav-itemed">
+									<a class="_ks" href="javascript:;">白天</a>
+									<dl class="layui-nav-child">
+										<dd><a href="javascript:;" class="qsyrfy">竞选警长</a></dd>
+										<dd><a href="PoliceBadge.html">警徽选择</a></dd>
+										<dd><a href="javascript:;"  class="qjzfy">警长发言</a></dd>
+										<dd><a href="javascript:;" class="qsyrfy">所有人发言</a></dd>
+										<dd><a href="Vote.html">投票</a></dd>
+									</dl>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="content _sa">
+				<div class="NumberDay" style="margin: 1rem auto;">
+					<ul class="layui-nav layui-nav-tree _ul">
+						<li class="layui-nav-item layui-nav-itemed" style="text-align:center">
+							<a href="javascript:;">第三天</a>
+							<dl class="layui-nav-child">
+								<dd class=" layui-nav-itemed">
+									<a class="_ks" href="javascript:;">晚上</a>
+									<dl class="layui-nav-child">
+										<dd class="layui-this"><a href="Werewolves.html">狼人杀人</a></dd>
+										<dd><a href="See.html">预言家查看</a></dd>
+										<dd><a href="Witch.html">女巫选择</a></dd>
+										<dd><a href="Savior.html">守卫选择</a></dd>
+									</dl>
+								</dd>
+								<dd class=" layui-nav-itemed">
+									<a class="_ks" href="javascript:;">白天</a>
+									<dl class="layui-nav-child">
+										<dd><a href="javascript:;" class="qsyrfy">竞选警长</a></dd>
+										<dd><a href="PoliceBadge.html">警徽选择</a></dd>
+										<dd><a href="javascript:;"  class="qjzfy">警长发言</a></dd>
+										<dd><a href="javascript:;" class="qsyrfy">所有人发言</a></dd>
+										<dd><a href="Vote.html">投票</a></dd>
+									</dl>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="content _si">
+				<div class="NumberDay" style="margin: 1rem auto;">
+					<ul class="layui-nav layui-nav-tree _ul">
+						<li class="layui-nav-item layui-nav-itemed" style="text-align:center">
+							<a href="javascript:;">第四天</a>
+							<dl class="layui-nav-child">
+								<dd class=" layui-nav-itemed">
+									<a class="_ks" href="javascript:;">晚上</a>
+									<dl class="layui-nav-child">
+										<dd class="layui-this"><a href="Werewolves.html">狼人杀人</a></dd>
+										<dd><a href="See.html">预言家查看</a></dd>
+										<dd><a href="Witch.html">女巫选择</a></dd>
+										<dd><a href="Savior.html">守卫选择</a></dd>
+									</dl>
+								</dd>
+								<dd class=" layui-nav-itemed">
+									<a class="_ks" href="javascript:;">白天</a>
+									<dl class="layui-nav-child">
+										<dd><a href="javascript:;" class="qsyrfy">竞选警长</a></dd>
+										<dd><a href="PoliceBadge.html">警徽选择</a></dd>
+										<dd><a href="javascript:;"  class="qjzfy">警长发言</a></dd>
+										<dd><a href="javascript:;" class="qsyrfy">所有人发言</a></dd>
+										<dd><a href="Vote.html">投票</a></dd>
+									</dl>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="content _wu">
+				<div class="NumberDay" style="margin: 1rem auto;">
+					<ul class="layui-nav layui-nav-tree _ul">
+						<li class="layui-nav-item layui-nav-itemed" style="text-align:center">
+							<a href="javascript:;">第五天</a>
+							<dl class="layui-nav-child">
+								<dd class=" layui-nav-itemed">
+									<a class="_ks" href="javascript:;">晚上</a>
+									<dl class="layui-nav-child">
+										<dd class="layui-this"><a href="Werewolves.html">狼人杀人</a></dd>
+										<dd><a href="See.html">预言家查看</a></dd>
+										<dd><a href="Witch.html">女巫选择</a></dd>
+										<dd><a href="Savior.html">守卫选择</a></dd>
+									</dl>
+								</dd>
+								<dd class=" layui-nav-itemed">
+									<a class="_ks" href="javascript:;">白天</a>
+									<dl class="layui-nav-child">
+										<dd><a href="javascript:;" class="qsyrfy">竞选警长</a></dd>
+										<dd><a href="PoliceBadge.html">警徽选择</a></dd>
+										<dd><a href="javascript:;"  class="qjzfy">警长发言</a></dd>
+										<dd><a href="javascript:;" class="qsyrfy">所有人发言</a></dd>
+										<dd><a href="Vote.html">投票</a></dd>
+									</dl>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="content _liu">
+				<div class="NumberDay" style="margin: 1rem auto;">
+					<ul class="layui-nav layui-nav-tree _ul">
+						<li class="layui-nav-item layui-nav-itemed" style="text-align:center">
+							<a href="javascript:;">第六天</a>
+							<dl class="layui-nav-child">
+								<dd class=" layui-nav-itemed">
+									<a class="_ks" href="javascript:;">晚上</a>
+									<dl class="layui-nav-child">
+										<dd class="layui-this"><a href="Werewolves.html">狼人杀人</a></dd>
+										<dd><a href="See.html">预言家查看</a></dd>
+										<dd><a href="Witch.html">女巫选择</a></dd>
+										<dd><a href="Savior.html">守卫选择</a></dd>
+									</dl>
+								</dd>
+								<dd class=" layui-nav-itemed">
+									<a class="_ks" href="javascript:;">白天</a>
+									<dl class="layui-nav-child">
+										<dd><a href="javascript:;" class="qsyrfy">竞选警长</a></dd>
+										<dd><a href="PoliceBadge.html">警徽选择</a></dd>
+										<dd><a href="javascript:;"  class="qjzfy">警长发言</a></dd>
+										<dd><a href="javascript:;" class="qsyrfy">所有人发言</a></dd>
+										<dd><a href="Vote.html">投票</a></dd>
+									</dl>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="content _qi">
+				<div class="NumberDay" style="margin: 1rem auto;">
+					<ul class="layui-nav layui-nav-tree _ul">
+						<li class="layui-nav-item layui-nav-itemed" style="text-align:center">
+							<a href="javascript:;">第七天</a>
+							<dl class="layui-nav-child">
+								<dd class=" layui-nav-itemed">
+									<a class="_ks" href="javascript:;">晚上</a>
+									<dl class="layui-nav-child">
+										<dd class="layui-this"><a href="Werewolves.html">狼人杀人</a></dd>
+										<dd><a href="See.html">预言家查看</a></dd>
+										<dd><a href="Witch.html">女巫选择</a></dd>
+										<dd><a href="Savior.html">守卫选择</a></dd>
+									</dl>
+								</dd>
+								<dd class=" layui-nav-itemed">
+									<a class="_ks" href="javascript:;">白天</a>
+									<dl class="layui-nav-child">
+										<dd><a href="javascript:;" class="qsyrfy">竞选警长</a></dd>
+										<dd><a href="PoliceBadge.html">警徽选择</a></dd>
+										<dd><a href="javascript:;"  class="qjzfy">警长发言</a></dd>
+										<dd><a href="javascript:;" class="qsyrfy">所有人发言</a></dd>
+										<dd><a href="Vote.html">投票</a></dd>
+									</dl>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="content _ba">
+				<div class="NumberDay" style="margin: 1rem auto;">
+					<ul class="layui-nav layui-nav-tree _ul">
+						<li class="layui-nav-item layui-nav-itemed" style="text-align:center">
+							<a href="javascript:;">第八天</a>
+							<dl class="layui-nav-child">
+								<dd class=" layui-nav-itemed">
+									<a class="_ks" href="javascript:;">晚上</a>
+									<dl class="layui-nav-child">
+										<dd class="layui-this"><a href="Werewolves.html">狼人杀人</a></dd>
+										<dd><a href="See.html">预言家查看</a></dd>
+										<dd><a href="Witch.html">女巫选择</a></dd>
+										<dd><a href="Savior.html">守卫选择</a></dd>
+									</dl>
+								</dd>
+								<dd class=" layui-nav-itemed">
+									<a class="_ks" href="javascript:;">白天</a>
+									<dl class="layui-nav-child">
+										<dd><a href="javascript:;" class="qsyrfy">竞选警长</a></dd>
+										<dd><a href="PoliceBadge.html">警徽选择</a></dd>
+										<dd><a href="javascript:;"  class="qjzfy">警长发言</a></dd>
+										<dd><a href="javascript:;" class="qsyrfy">所有人发言</a></dd>
+										<dd><a href="Vote.html">投票</a></dd>
+									</dl>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="content _jiu">
+				<div class="NumberDay" style="margin: 1rem auto;">
+					<ul class="layui-nav layui-nav-tree _ul">
+						<li class="layui-nav-item layui-nav-itemed" style="text-align:center">
+							<a href="javascript:;">第九天</a>
+							<dl class="layui-nav-child">
+								<dd class=" layui-nav-itemed">
+									<a class="_ks" href="javascript:;">晚上</a>
+									<dl class="layui-nav-child">
+										<dd class="layui-this"><a href="Werewolves.html">狼人杀人</a></dd>
+										<dd><a href="See.html">预言家查看</a></dd>
+										<dd><a href="Witch.html">女巫选择</a></dd>
+										<dd><a href="Savior.html">守卫选择</a></dd>
+									</dl>
+								</dd>
+								<dd class=" layui-nav-itemed">
+									<a class="_ks" href="javascript:;">白天</a>
+									<dl class="layui-nav-child">
+										<dd><a href="javascript:;" class="qsyrfy">竞选警长</a></dd>
+										<dd><a href="PoliceBadge.html">警徽选择</a></dd>
+										<dd><a href="javascript:;"  class="qjzfy">警长发言</a></dd>
+										<dd><a href="javascript:;" class="qsyrfy">所有人发言</a></dd>
+										<dd><a href="Vote.html">投票</a></dd>
+									</dl>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="content _shi">
+				<div class="NumberDay" style="margin: 1rem auto;">
+					<ul class="layui-nav layui-nav-tree _ul">
+						<li class="layui-nav-item layui-nav-itemed" style="text-align:center">
+							<a href="javascript:;">第十天</a>
+							<dl class="layui-nav-child">
+								<dd class=" layui-nav-itemed">
+									<a class="_ks" href="javascript:;">晚上</a>
+									<dl class="layui-nav-child">
+										<dd class="layui-this"><a href="Werewolves.html">狼人杀人</a></dd>
+										<dd><a href="See.html">预言家查看</a></dd>
+										<dd><a href="Witch.html">女巫选择</a></dd>
+										<dd><a href="Savior.html">守卫选择</a></dd>
+									</dl>
+								</dd>
+								<dd class=" layui-nav-itemed">
+									<a class="_ks" href="javascript:;">白天</a>
+									<dl class="layui-nav-child">
+										<dd><a href="javascript:;" class="qsyrfy">竞选警长</a></dd>
+										<dd><a href="PoliceBadge.html">警徽选择</a></dd>
+										<dd><a href="javascript:;"  class="qjzfy">警长发言</a></dd>
+										<dd><a href="javascript:;" class="qsyrfy">所有人发言</a></dd>
+										<dd><a href="Vote.html">投票</a></dd>
+									</dl>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		 -->
+		</div>
+		<button type="button" id="_fg"><a href="Judge.html">法官查看</a></button>
+
+	</div>
+</body>
+<script type="text/javascript"></script>
+<script type="text/javascript" src="swiper-4.5.0/dist/js/swiper.min.js"></script>
+<script src="layui/layui.js"></script>
+<script type="text/javascript">
+    layui.use('element', function () {
+        var element = layui.element;
+        //…
+    });
+</script>
+<script type="text/javascript">
+	var _Modes = JSON.parse(localStorage.getItem("_Modes"));
+	$("#_ts").html("第"+_Modes.ract+"天")
+	$(".qsyrfy").click(function () {
+		alert("请所有人发言");
+	});
+	$(".qjzfy").click(function () {
+		alert("请警长发言");
+	});
+	
+	$("#_pd").click(function () {
+		var _Werewolvesgs=0;
+		var _Priesthoodgs=0;
+		var _Villagergs=0;
+		for(var i=0;i<_Modes.Modes.length;i++){
+			console.log(_Modes.Modes);
+			if(_Modes.Modes[i]=="村民"){
+				_Villagergs++;
+			}else if(_Modes.Modes[i]=="狼人"){
+				_Werewolvesgs++;
+			}else if(_Modes.Modes[i]=="预言家"){
+				_Priesthoodgs++;
+			}else if(_Modes.Modes[i]=="女巫"){
+				_Priesthoodgs++;
+			}else if(_Modes.Modes[i]=="守卫"){
+				_Priesthoodgs++;
+			}
+			
+			// ((_Modes[i]=="预言家") or (_Modes[i]=="女巫") or (_Modes[i]=="守卫")){
+			// 	_Priesthoodgs++;
+			// }
+		}
+		if(_Werewolvesgs==0){
+			alert("村民胜利");
+		}else if(_Priesthoodgs==0){
+			alert("狼人胜利");
+		}else{
+			// $(".content").after($(".content").clone());
+			// $('.NumberDay').append($('.content').html());
+			alert("继续")
+			_Modes.ract++;
+			localStorage.setItem("_Modes",JSON.stringify(_Modes));
+			location.href="playgame.html"
+		}
+	})
+	
+	
+	
+	
+	
+	
+
+</script>
+</html>

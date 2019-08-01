@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="swiper-4.5.0/dist/css/swiper.min.css"/>
+    <script type="text/javascript">
+    	
+   		document.addEventListener('plusready', function(){
+   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+   			
+   		});	
+    </script>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		
+		.NavigationBars{
+			display: flex;
+			justify-content:space-between;
+			background: #007AFF;
+			padding: 1rem;
+		}
+		.button{
+			display: flex;
+			justify-content:center;
+		}
+		.button button{
+			width: 4rem;
+			margin: 1rem;
+			margin-top: 5rem;
+		}
+		._villager{
+			display: flex;
+			justify-content:center;
+			margin-top: 1rem;
+			margin-left: 2rem;
+		}
+		._villager>label{
+			width: 5rem;
+		}
+		._Players{
+			display: flex;
+			justify-content:center;
+		}
+		._Players button{
+			height: 2rem;
+			width: 5rem;
+			margin: 2rem;
+		}
+	</style>
+</head>
+<body>
+	<div class="Box">
+		<div class="Background ">
+			<div class="NavigationBars">
+				<div class="logo">
+					
+					<a href="index.html">返回</a>
+				</div>
+				<div class="headline">
+					游戏人数
+				</div>
+				<div class="music">
+					
+				</div>
+			</div>
+			<div class="_Players">
+				<button type="button" class="_9">9</button>
+				<button type="button" class="_10">10</button>
+			</div>
+			<div class="_Players">
+				<button type="button" class="_11">11</button>
+				<button type="button" class="_12">12</button>
+			</div>
+			<div class="Register">
+				<div class="_villager">
+					<label>村民</label>
+					<label>3</label>
+				</div>
+				<div class="_villager">
+					<label>预言家</label>
+					<label>1</label>
+				</div>
+				<div class="_villager">
+					<label>女巫</label>
+					<label>1</label>
+				</div>
+				<div class="_villager">
+					<label>守卫</label>
+					<label>1</label>
+				</div>
+				<div class="_villager">
+					<label>狼人</label>
+					<label>3</label>
+				</div>
+			</div>
+			<div class="button">
+				<div class="Centered">
+					<button type="button"><a href="deal.html">下一步</a></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript"></script>
+<script type="text/javascript" src="swiper-4.5.0/dist/js/swiper.min.js"></script>
+<script type="text/javascript">
+		// $("._9").click(function () {
+		// 	$(".Register div:eq(0) label:eq(1)").html("3");
+		// 	$(".Register div:eq(5) label:eq(1)").html("3")
+		// })
+		// $("._10").click(function () {
+		// 	$(".Register div:eq(0) label:eq(1)").html("4");
+		// 	$(".Register div:eq(5) label:eq(1)").html("3")
+		// })
+		// $("._11").click(function () {
+		// 	$(".Register div:eq(0) label:eq(1)").html("4");
+		// 	$(".Register div:eq(5) label:eq(1)").html("4")
+		// })
+		// $("._12").click(function () {
+		// 	$(".Register div:eq(0) label:eq(1)").html("5");
+		// 	$(".Register div:eq(5) label:eq(1)").html("4")
+		// })
+		function klk(a,b,c){
+			$(a).click(function () {
+				$(".Register div:eq(0) label:eq(1)").html(b);
+				$(".Register div:eq(4) label:eq(1)").html(c)
+				var Villager="村民"
+				var See="预言家"
+				var Witch="女巫"
+				var Savior="守卫"
+				var Werewolves="狼人"
+				var _arr=[Villager,Villager,Villager,See,Witch,Savior,Werewolves,Werewolves,Werewolves]
+				var _currency=["???","???","???","???","???","???","???","???","???"]
+				var _count=[1,2,3,4,5,6,7,8,9]
+				function Upset(){
+					return Math.random() >0.5 ? -1 : 1 ;
+				}
+				if(a=="._9"){
+					_arr.sort(Upset);
+				}else if(a=="._10"){
+					_arr=[Villager,Villager,Villager,See,Witch,Savior,Werewolves,Werewolves,Werewolves,Villager];
+					_currency=["???","???","???","???","???","???","???","???","???","???"];
+					_count=[1,2,3,4,5,6,7,8,9,10]
+					_arr.sort(Upset);
+				}else if(a=="._11"){
+					_arr=[Villager,Villager,Villager,See,Witch,Savior,Werewolves,Werewolves,Werewolves,Villager,Werewolves];
+					_currency=["???","???","???","???","???","???","???","???","???","???","???"];
+					_count=[1,2,3,4,5,6,7,8,9,10,11]
+					_arr.sort(Upset);
+				}else if(a=="._12"){
+					_arr=[Villager,Villager,Villager,See,Witch,Savior,Werewolves,Werewolves,Werewolves,Villager,Werewolves,Villager];
+					_currency=["???","???","???","???","???","???","???","???","???","???","???","???"];
+					_count=[1,2,3,4,5,6,7,8,9,10,11,12]
+					_arr.sort(Upset);
+				}
+				function _bl(a){
+					for(var i=0;i<_currency.length;i++){
+						a[i]=_currency[i];
+					}
+				}
+				var _zd;
+				var _see=[];
+				var _witch=[];
+				var _savior=[];
+				var _werewolves=[];
+				_bl(_see);
+				_zd=_arr.indexOf("预言家");
+				_see[_zd]=_arr[_zd];
+				_bl(_witch);
+				_zd=_arr.indexOf("女巫");
+				_witch[_zd]=_arr[_zd];
+				_bl(_savior);
+				_zd=_arr.indexOf("守卫");
+				_savior[_zd]=_arr[_zd];
+				_bl(_werewolves);
+				for(var i=0;i<_arr.length;i++){
+					if(_arr[i]=="狼人"){
+						_werewolves[i]=_arr[i];
+					}
+				}
+				// _zd=_arr.indexOf("狼人");
+				// _werewolves[_zd]=_arr[_zd];
+				// =_currency;
+				// _zd=_arr.indexOf("女巫");
+				// _witch[_zd]=_arr[_zd];
+				// _currency;
+				// _zd=_arr.indexOf("守卫");
+				// =_currency;
+				// _savior[_zd]=_arr[_zd];
+				// _zd=_arr.indexOf("狼人");
+				// _werewolves[_zd]=_arr[_zd];	
+				console.log(_see);
+				console.log(_witch);
+				console.log(_savior);
+				console.log(_werewolves);
+				console.log(_currency);
+				var _aaa=1;
+				// var autr=0;
+				var _Modes = {
+					Modes:_arr,
+					Currency:_currency,
+					See:_see,
+					Witch:_witch,
+					Savior:_savior,
+					Werewolves:_werewolves,
+					Count:_count,
+					ract:_aaa,
+					// awsaid:autr
+				}
+				var _bf=_Modes;
+				localStorage.setItem("_bf",JSON.stringify(_bf));
+				localStorage.setItem("_Modes",JSON.stringify(_Modes));
+			})
+		}
+		klk("._9",3,3)
+		klk("._10",4,3,)
+		klk("._11",4,4)
+		klk("._12",5,4)
+		
+
+		
+		
+		
+		
+		
+		
+		
+</script>
+</html>

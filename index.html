@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="swiper-4.5.0/dist/css/swiper.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <script type="text/javascript">
+    	
+   		document.addEventListener('plusready', function(){
+   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+   			
+   		});	
+    </script>
+</head>
+<body>
+	<div class="Box">
+		<div class="Background ">
+			<div class="NavigationBars">
+				<div class="logo">
+					logo
+				</div>
+				<div class="headline">
+					标题
+				</div>
+				<div class="music">
+					music
+				</div>
+			</div>
+			<div class="Carousel">
+				<!-- +https://www.swiper.com.cn/api/autoplay/399.html -->
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide"><img src="img/lbt-1.jpg" ></div>
+						<div class="swiper-slide"><img src="img/lbt-2.jpg" ></div>
+						<div class="swiper-slide"><img src="img/lbt-3.jpg" ></div>
+					</div>
+					<div class="swiper-pagination"></div>
+				</div>
+			</div>
+			<div class="Register">
+				<div class="mui-input-row">
+					<label>用户名</label>
+					<input type="text" placeholder="请输入用户名" id="_yhm">
+				</div>
+				<div class="mui-input-row">
+					<label>密码</label>
+					<input type="text" placeholder="请输入密码" id="_mm">
+				</div>
+			</div>
+			<div class="button">
+				<div class="Centered">
+					<button type="button"><a id="register">登录</a></button>  <!-- href="" -->
+					<button type="button"><a href="register.html">注册</a></button>
+					<button type="button"><a href="">忘记密码</a></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript"></script>
+<script type="text/javascript" src="swiper-4.5.0/dist/js/swiper.min.js"></script>
+<script type="text/javascript">
+ var mySwiper = new Swiper ('.swiper-container', {
+    // 如果需要分页器
+    pagination: {
+    el: '.swiper-pagination',
+	},autoplay: {
+	  delay: 3000,//1秒切换一次
+	},
+  })
+  
+	register.onclick = function(){
+		var userData = JSON.parse(localStorage.getItem("userData"));
+		console.log(userData.UserName==$("#_yhm").val()&&userData.Password==$("#_mm").val());
+		if(userData==null){
+			alert("请先注册")
+		}else{
+			if(userData.UserName==$("#_yhm").val()&&userData.Password==$("#_mm").val()){
+				location.href="start.html"
+			}
+			
+		}
+	}
+</script>
+</html>

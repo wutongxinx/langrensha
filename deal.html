@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="swiper-4.5.0/dist/css/swiper.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <script type="text/javascript">
+    	
+   		document.addEventListener('plusready', function(){
+   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+   			
+   		});	
+    </script>
+	<style type="text/css">
+		.Box div{
+			display: flex;
+			justify-content:center
+		}
+		._Numerical span{
+			margin: 1rem;
+			width: 3rem;
+			height: 3rem;
+			background: #0000FF;
+			display: flex;
+			justify-content:center;
+			align-items:center;
+			border-radius:50%
+		}
+		._Img span{
+			margin: 1rem;
+			width: 15rem;
+			height: 25rem;
+			background: chocolate;
+			display: flex;
+			justify-content:center;
+			align-items:center;
+		}
+		._Button button{
+			margin: 3rem;
+			height: 2.5rem;
+			width: 5rem;
+		}
+	</style>
+</head>
+<body>
+	<div class="Box">
+		<div class="_Numerical">
+			<span>1</span>
+		</div>
+		<div class="_Img">
+			<span>???</span>
+		</div>
+		<div class="_Button">
+			<button type="button" id="">显示身份</button>
+			<button type="button" disabled="disabled" id="_xsa">下一个</button>
+		</div>
+	</div>
+</body>
+<script type="text/javascript"></script>
+<script type="text/javascript" src="swiper-4.5.0/dist/js/swiper.min.js"></script>
+<script type="text/javascript">
+	var _Modes = JSON.parse(localStorage.getItem("_Modes"));
+	var _x=0;
+	var _y=2;
+	$("._Button button:eq(0)").click(function(){
+		$("._Img span").html(_Modes.Modes[_x])
+		//https://blog.csdn.net/qq_38455201/article/details/80591530
+		$(this).attr('disabled',true);
+		$("._Button button:eq(1)").attr('disabled',false);
+		_x++;
+		// _arr.length+1 == 10 ? $(this).attr('disabled',true) : ;
+		if(_Modes.Modes.length==_x){
+			// $("#_xsa").val("开始游戏")
+			$("#_xsa").text("开始游戏")
+		}
+	})
+	$("._Button button:eq(1)").click(function(){
+		$("._Numerical span").html(_y)
+		$(this).attr('disabled',true);
+		$("._Button button:eq(0)").attr('disabled',false);
+		_y++;
+		$("._Img span").html("???")
+		if(_Modes.Modes.length==_x){
+			location.href="playgame.html"
+		}
+	})
+	
+
+
+</script>
+</html>

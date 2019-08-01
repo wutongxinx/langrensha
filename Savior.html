@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="swiper-4.5.0/dist/css/swiper.min.css"/>
+	<link rel="stylesheet" href="layui/css/layui.css">
+    <script type="text/javascript">
+    	
+   		document.addEventListener('plusready', function(){
+   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+   			
+   		});	
+    </script>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.Box{
+			height: 100%;
+			width: 100%;
+			margin-top: 1rem;
+		}
+		.Box ul{
+			display: flex;
+			justify-content:center;
+		}
+		.Box ul li{
+			display: flex;
+			justify-content:center;
+			align-items:center;
+			width: 7rem;
+			height: 7rem;
+			border:1px solid #00F;
+		}
+		.Box button{
+			margin: 2rem;
+			width: 5rem;
+			height: 2rem;
+		}
+		#Choice{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="Box">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<div id="Choice">
+			Choice
+		</div>
+		<ul>
+			<button type="button" id="_jy">守卫</button>
+			<button type="button"><a href="playgame.html">离开</a></button>
+		</ul>
+		
+	</div>
+</body>
+<script type="text/javascript"></script>
+<script type="text/javascript" src="swiper-4.5.0/dist/js/swiper.min.js"></script>
+<script src="layui/layui.js"></script>
+<script type="text/javascript">
+    layui.use('element', function () {
+        var element = layui.element;
+        //…
+    });
+</script>
+<script type="text/javascript">
+	var _Modes = JSON.parse(localStorage.getItem("_Modes"));
+	var a=0;
+	var x=0;
+	var y=0;
+	for(var i=0;i<=3;i++){
+		for(var j=0;j<3;j++){
+			$(".Box ul:eq("+i+") li:eq("+j+")").html(_Modes.Count[a]+_Modes.Savior[a]);
+			a++;
+		}
+	}
+	$(".Box ul li").click(function () {
+		x = $(this).index();
+		y=$(this).parent().index()
+		var _x=5+7*x;
+		var _y=6+7*y;
+		$('#Choice').css({
+			display: 'block',
+			position: 'absolute',
+			left: _x + 'rem',
+			top: _y + 'rem'
+		})
+	})
+	// $("#_jy").click(function () {
+		$("#_jy").click(function () {
+		
+			if((x+y*3)<=_Modes.Savior.length && _Modes.Savior[x+y*3]=="???"){
+				var _bf = JSON.parse(localStorage.getItem("_bf"));
+				_Modes=_bf;
+				localStorage.setItem("_Modes",JSON.stringify(_Modes));
+				_bf.Savior[x+y*3]=_bf.Modes[x+y*3]
+				localStorage.setItem("_bf",JSON.stringify(_bf));
+				location.href="playgame.html"
+			}else{
+				alert("What do you want to do?");
+			}
+			// console.log(_Modes.Modes);
+			// console.log(_Modes.Currency);
+			// console.log(_Modes.See);
+			// console.log(_Modes.Witch);
+			// console.log(_Modes.Savior);
+			// console.log(_Modes.Werewolves);
+		})
+// 		if((x+y*3)<=_Modes.Savior.length && _Modes.Savior[x+y*3]=="???"){
+// 			for(var i=0;i<_Modes.Savior.length;i++){
+// 				if(_Modes.Currency[i]=="???out"){
+// 					if(_Modes.Savior[i]=="守卫"){
+// 						_Modes.Savior[i]=_Modes.Modes[i]
+// 					}else{
+// 						
+// 						var _bf = JSON.parse(localStorage.getItem("_bf"));
+// 						_bf.Savior[x+y*3]=_bf.Modes[x+y*3]
+// 						localStorage.setItem("_Modes",JSON.stringify(_Modes));
+// 						_Modes.Savior[i]=_Modes.Currency[i];
+// 						
+// 					}
+// 				}
+// 			}
+// 			
+// 
+// 
+// 		console.log(_Modes.Modes);
+// 		console.log(_Modes.Currency);
+// 		console.log(_Modes.See);
+// 		console.log(_Modes.Witch);
+// 		console.log(_Modes.Savior);
+// 		console.log(_Modes.Werewolves);
+// 			var _bf=_Modes;
+// 			localStorage.setItem("_bf",JSON.stringify(_bf));
+// 			// location.href="playgame.html"
+// 		}else{
+// 			alert("What do you want to do?");
+// 		}
+
+	// })
+</script>
+</html>
